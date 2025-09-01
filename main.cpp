@@ -1,9 +1,12 @@
+//Rene Rodriguez 08/31/25 Lab Activity: User Defined Functions
+//Challenge 1: Geometric Calculations with Function Overloading
 #include<iostream>
 using namespace std;
 #define _USE_MATH_DEFINES
 #include<math.h>
 #include<cctype>
 #include <sstream>
+//overloading functions
 double calculateArea(const double radius){
     return radius * radius * M_PI;
 }
@@ -16,6 +19,7 @@ double calculatePerimeter(const double radius){
 double calculatePerimeter(const double length, const double width){
     return (2 * length) + (2 * width);
 }
+//getting user input through function for repeatability
 double getInput(){
     double input;
     cin >> input;
@@ -34,6 +38,7 @@ double getInput(){
     cout << "You entered " << input << endl;
     return input;
 }
+//original prompt
 void promptUser(){
     cout << "What would you like to do?" << endl;
     cout << "\t 1. Area of a Circle" << endl;
@@ -45,21 +50,24 @@ void promptUser(){
 
 int main()
 {
+    //initialized variables for future calculations
     int userInput;
     double output;
     double radius;
     double length;
     double width;
+    //do while loop which prompts users until user input is 5
     do {
         promptUser();
         cin >> userInput;
+        //input validation
         if (cin.fail()) {
             cout << "Invalid input, try again.\n";
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             continue; 
         }
-    
+    //takes user input and uses that for switch statement 
         switch (userInput){
             case 1:
                 cout << "Enter radius:" << endl;
